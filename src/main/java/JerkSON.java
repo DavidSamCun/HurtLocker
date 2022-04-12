@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class JerkSON {
 
     List<String> listItems;
+    String defaultRegex1 = "(?<=^|##).+?(?=##)";
 
     public JerkSON() {
         this.listItems = new ArrayList<>();
@@ -41,23 +42,32 @@ public class JerkSON {
         return inputString;
     }
 
-    public void splitAndList(String inputString, String regex){
-//        Pattern pat = Pattern.compile(regex);
-//        Matcher mat = pat.matcher(inputString);
-        Matcher mat = Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
-                .matcher(inputString);
+    public List<String> splitAndList(String inputString, String regex){
+        List<String> output = new ArrayList<>();
+        //Spoiler! (?<=^|[;@^*%!]).+?(?=[;@^*%!])   [;@^*%!]
+        //String divider = "(?<=^|" + regex +").+?(?=" + regex +")";  //Original
 
+        String divider = "(?<=^|" + regex +").+?(?=" + regex +")";
+        Matcher mat = Pattern.compile(divider, Pattern.CASE_INSENSITIVE)
+                .matcher(inputString);
         while(mat.find()){
-            listItems.add(mat.group());
+            output.add(mat.group() + ";");
+            listItems.add(mat.group() + ";");
         }
-        Iterator it = listItems.iterator();
+        iterate(output);
+        return output;
+    }
+
+    public List<String> getListItems(){
+        return this.listItems;
+    }
+
+    public void iterate(List<String> item){
+        Iterator it = item.iterator();
         System.out.println("List of Matches: \n");
         while(it.hasNext()){
             System.out.println(it.next());
         }
     }
 
-    public List<String> getListItems(){
-        return this.listItems;
-    }
 }
