@@ -13,7 +13,7 @@ class GroceriesTest {
 
     @Test
     public void constructorTest(){
-        Groceries construct = new Groceries("Milk", 3.23, "Food", "01/21/2020");
+        Groceries construct = new Groceries("Milk", "3.23", "Food", "01/21/2020");
 
     }
 

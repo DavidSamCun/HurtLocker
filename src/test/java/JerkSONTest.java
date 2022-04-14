@@ -80,17 +80,31 @@ class JerkSONTest {
         JerkSON splitMeth = new JerkSON();
         String combine = test1Normal1 + "##" + test1Normal2 + "##";
         //String split = "(?<=^|##).+?(?=##)";
+
         String split = "##";
         splitMeth.splitAndList(combine,split);
         Assert.assertEquals(2, splitMeth.getListItems().size());
-        Assert.assertEquals(test1Normal1, splitMeth.getListItems().get(0));
-        Assert.assertEquals(test1Normal2, splitMeth.getListItems().get(1));
+        Assert.assertEquals(test1Normal1+";", splitMeth.getListItems().get(0));
+        Assert.assertEquals(test1Normal2+";", splitMeth.getListItems().get(1));
     }
 
     @Test
     void splitAndListTest3(){
         JerkSON splitMeth = new JerkSON();
-        String split = "##";
+        String split = "(?<=^|##).+?(?=##)";
         splitMeth.splitAndList(theRealDEAL,split);
+    }
+
+    @Test
+    void buildGroceryTest1(){
+        JerkSON splitMeth = new JerkSON();
+        //(?<=[:;@^*%!]).+?(?=[:;@^*%!])
+        String test = test1Normal1 + ";";  //"Name:Milk;Price:3.23;type:food;expiration:1/24/2016"
+        Groceries output = splitMeth.buildGrocery(test);
+
+        Assert.assertEquals(output.getName(), "Milk");
+        Assert.assertEquals(output.getPrice(), "3.23");
+        Assert.assertEquals(output.getType(), "food");
+        Assert.assertEquals(output.getDate(), "1/24/2016");
     }
 }
