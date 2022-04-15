@@ -20,7 +20,16 @@ public class Main {
         groceriesList.buildGroceriesList(output); //Step 1
         groceriesList.mapItemPrice("Milk", "[mMiIlLkK]{4}");
         groceriesList.mapItemPrice("Cookies", "[cCoO0kKIieEsS]{7}");
+        groceriesList.mapItemPrice("Bread", "[BbrReEaAdD]{5}");
+        groceriesList.mapItemPrice("Apples", "[aApPpPlLeEsS]{6}");
 
+        String milk = groceriesList.printPriceMap("Milk");
+        String cookies = groceriesList.printPriceMap("Cookies");
+        String bread = groceriesList.printPriceMap("Bread");
+        String apples = groceriesList.printPriceMap("Apples");
 
+        String output2 = milk + "\n" + cookies + "\n" + bread + "\n" + apples + "\n" + "\n" + "Errors caught: " + jerkSONver2.getExceptionCatches();
+
+        System.out.println(output2);
     }
 }

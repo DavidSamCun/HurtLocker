@@ -120,11 +120,19 @@ class GroceriesListTest {
         }
 
         Assert.assertEquals(expected, total);
-
-
     }
 
     @Test
     void mapItemPrice() {
+
+        GroceriesList groceriesList = new GroceriesList(jerksonV2);
+        groceriesList.buildGroceriesList(theRealDEAL);
+
+        groceriesList.mapItemPrice("Milk", "[mMiIlLkK]{4}");
+        String expected = "Milk Qty: 6\n" +
+                "Price 1.23 Qty: 1\n" +
+                "Price 3.23 Qty: 5\n";
+
+        Assert.assertEquals(expected, groceriesList.printPriceMap("Milk"));
     }
 }

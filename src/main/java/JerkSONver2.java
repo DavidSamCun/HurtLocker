@@ -7,19 +7,9 @@ public class JerkSONver2 {
 
     private Integer exceptionCatches = 0;
 
-    public JerkSONver2() {
-    }
-
     public Integer getExceptionCatches() {
         return exceptionCatches;
     }
-
-//    public void buildGroceriesList(String input){
-//        splitAndList(input, "(?<=^|##).+?(?=##)", true);      //Part 1, divie into seperate items and put in list
-//        for (String a : splitAndList(input, "(?<=^|##).+?(?=##)", true)) {
-//            groceriesList.add(buildGrocery(a));
-//        }
-//    }
 
     public List<String> splitAndList(String inputString, String regex, Boolean part1){
         List<String> output = new LinkedList<>();
@@ -40,7 +30,7 @@ public class JerkSONver2 {
                 output.add(mat.group());
             }
         }
-        iterate(output); //for testing
+        //iterate(output); //for testing
         return output;
     }
 
@@ -59,8 +49,6 @@ public class JerkSONver2 {
         Groceries item = new Groceries(inputDivided.get(0), inputDivided.get(1), inputDivided.get(2), inputDivided.get(3));
         return item;
     }
-
-
 
     public void iterate(List<String> item){
         Iterator it = item.iterator();

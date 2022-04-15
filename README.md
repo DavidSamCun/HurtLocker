@@ -4,20 +4,20 @@ By this time you should have been introduced to Java Strings, Exceptions, Unit T
 
 # You will need all of these today!
 
-In this project you will find a file in the resource folder called RawData.txt. It was supposed to be a grocery list formated in JSON, but after a huge defeat this weekend in a game called Munchkin, Tariq your fearless yet petty leader decided to come reformat it in his own Object Notation. JerkSON... you are welcome.
+In this project you will find a file in the resource folder called RawData.txt. It was supposed to be a grocery list formated in JSON, but after a huge defeat this weekend in a game called Munchkin, Tariq your fearless yet petty leader decided to come reformat it in his own Object Notation. devHell.JerkSON... you are welcome.
 
-## JerkSON Format
+## devHell.JerkSON Format
 
-Just like Json , JerkSON is supposed to be a Key Value Pair data store.
+Just like Json , devHell.JerkSON is supposed to be a Key Value Pair data store.
 
 In Json Key and Value are seperated as such (Key:Value) where the colon is the seperator.
 
-In JerkSON Key and Value could be seperated by using a any of the following (:, @, ^, *, %) and there is no guarntee that there isn't another hidden symbol seperator. (There could be another one, or maybe there isn't , you tell me)... lol
+In devHell.JerkSON Key and Value could be seperated by using a any of the following (:, @, ^, *, %) and there is no guarntee that there isn't another hidden symbol seperator. (There could be another one, or maybe there isn't , you tell me)... lol
 
-In Json Key and Value pairs are seperated by a ',' in JerkSON its '##'
+In Json Key and Value pairs are seperated by a ',' in devHell.JerkSON its '##'
 
 ## Your Task
-Its your job to build a JerkSON data parser, that is able to read in the raw data , and output a string formated list that resembles (outputFormat.txt) 
+Its your job to build a devHell.JerkSON data parser, that is able to read in the raw data , and output a string formated list that resembles (outputFormat.txt) 
 
 There are some things to look out for.... If you haven't figured it out by now Tariq has many wonderful qualities, spelling isn't one of them, so Words may not be spelled correctly. You need to decipher what Tariq was trying to spell using pattern matching.
 

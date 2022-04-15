@@ -1,3 +1,5 @@
+package devHell;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,11 +65,11 @@ public class JerkSON<T> {
         return output;
     }
 
-    public Groceries buildGrocery (String input){
-        List<String> inputDivided = splitAndList(input, "[;@^*%!]" );
-        Groceries item = new Groceries(inputDivided.get(0), inputDivided.get(1), inputDivided.get(2), inputDivided.get(3));
-        return item;
-    }
+//    public Groceries buildGrocery (String input){
+//        List<String> inputDivided = splitAndList(input, "[;@^*%!]" );
+//        Groceries item = new Groceries(inputDivided.get(0), inputDivided.get(1), inputDivided.get(2), inputDivided.get(3));
+//        return item;
+//    }
 
 
     public List<String> getListItems(){
