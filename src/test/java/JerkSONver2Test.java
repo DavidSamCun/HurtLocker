@@ -26,46 +26,46 @@ class JerkSONver2Test {
 
     }
 
-    @Test
-    void buildGroceriesList() {
-        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
-        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:cookies;Price:1.23;type:food;expiration:1/24/2014##";
-        String expected = "cookies";
-
-        testSplitGroceriesList.buildGroceriesList(testme);
-        Assert.assertEquals(expected, testSplitGroceriesList.getGroceriesList().get(1).getName());
-    }
-
-    @Test
-    void buildGroceriesList1() {
-        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
-        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:;Price:1.23;type:food;expiration:1/24/2014##";
-        Integer expected = 1;
-
-        testSplitGroceriesList.buildGroceriesList(testme);
-        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
-    }
-
-    @Test
-    void buildGroceriesList2() {
-        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
-        String testme = theRealDEAL;
-        Integer expected = 4;
-
-        testSplitGroceriesList.buildGroceriesList(testme);
-        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
-    }
-
-    @Test
-    void findMilkTest(){
-        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
-        String testme = theRealDEAL;
-        Integer expected = 4;
-
-        testSplitGroceriesList.buildGroceriesList(testme);
-
-        Integer milkAmnt = testSplitGroceriesList.findMilk();
-    }
+//    @Test
+//    void buildGroceriesList() {
+//        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+//        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:cookies;Price:1.23;type:food;expiration:1/24/2014##";
+//        String expected = "cookies";
+//
+//        testSplitGroceriesList.buildGroceriesList(testme);
+//        Assert.assertEquals(expected, testSplitGroceriesList.getGroceriesList().get(1).getName());
+//    }
+//
+//    @Test
+//    void buildGroceriesList1() {
+//        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+//        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:;Price:1.23;type:food;expiration:1/24/2014##";
+//        Integer expected = 1;
+//
+//        testSplitGroceriesList.buildGroceriesList(testme);
+//        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
+//    }
+//
+//    @Test
+//    void buildGroceriesList2() {
+//        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+//        String testme = theRealDEAL;
+//        Integer expected = 4;
+//
+//        testSplitGroceriesList.buildGroceriesList(testme);
+//        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
+//    }
+//
+//    @Test
+//    void findMilkTest(){
+//        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+//        String testme = theRealDEAL;
+//        Integer expected = 4;
+//
+//        testSplitGroceriesList.buildGroceriesList(testme);
+//
+//        Integer milkAmnt = testSplitGroceriesList.findMilk();
+//    }
 
 
 }

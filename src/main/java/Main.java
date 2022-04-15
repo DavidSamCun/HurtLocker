@@ -14,7 +14,5 @@ public class Main {
         String output = (new Main()).readRawDataToString();
         System.out.println(output);
 
-        jerkSon.buildGroceriesList(output);
-
     }
 }
