@@ -1,5 +1,10 @@
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import static org.junit.Assert.fail;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,25 +27,23 @@ class JerkSONver2Test {
     }
 
     @Test
-    void buildGrocery() {
-    }
-
-    @Test
-    void getListItems() {
-    }
-
-    @Test
-    void iterate() {
-    }
-
-
-    @Test
     void buildGroceriesList() {
         JerkSONver2 testSplitGroceriesList = new JerkSONver2();
-        String testme = test2Double;
+        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:cookies;Price:1.23;type:food;expiration:1/24/2014##";
+        String expected = "cookies";
 
         testSplitGroceriesList.buildGroceriesList(testme);
+        Assert.assertEquals(expected, testSplitGroceriesList.getGroceriesList().get(1).getName());
+    }
 
+    @Test
+    void buildGroceriesList1() {
+        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+        String testme = "Name:Milk;Price:3.23;type:food;expiration:1/24/2016##Name:;Price:1.23;type:food;expiration:1/24/2014##";
+        Integer expected = 1;
+
+        testSplitGroceriesList.buildGroceriesList(testme);
+        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
     }
 
 

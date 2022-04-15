@@ -10,8 +10,11 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception{
+        JerkSONver2 jerkSon = new JerkSONver2();
         String output = (new Main()).readRawDataToString();
         System.out.println(output);
+
+        jerkSon.buildGroceriesList(output);
 
     }
 }

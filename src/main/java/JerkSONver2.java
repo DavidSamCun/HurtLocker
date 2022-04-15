@@ -1,13 +1,14 @@
+import javax.lang.model.type.NullType;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class JerkSONver2 {
 
-    List<String> listItems;
-    List<Groceries> groceriesList;
+    private List<String> listItems;
+    private List<Groceries> groceriesList;
     String defaultRegex1 = "(?<=^|##).+?(?=##)";
-    Integer exceptionCatches = 0;
+    private Integer exceptionCatches = 0;
 
     public JerkSONver2() {
         this.listItems = new ArrayList<>();
@@ -22,15 +23,16 @@ public class JerkSONver2 {
         return groceriesList;
     }
 
+    public Integer getExceptionCatches() {
+        return exceptionCatches;
+    }
 
     public void buildGroceriesList(String input){
         splitAndList(input, "(?<=^|##).+?(?=##)", true);      //Part 1, divie into seperate items and put in list
 
-
         for (String a : splitAndList(input, "(?<=^|##).+?(?=##)", true)) {
-            buildGrocery(a);
+            groceriesList.add(buildGrocery(a));
         }
-
 
 
 
@@ -77,7 +79,8 @@ public class JerkSONver2 {
                     .matcher(a);
             if(mat.find()){
                 exceptionCatches++;
-                break;
+                //throw( new NullPointerException());
+                return null;
             }
         }
         Groceries item = new Groceries(inputDivided.get(0), inputDivided.get(1), inputDivided.get(2), inputDivided.get(3));
