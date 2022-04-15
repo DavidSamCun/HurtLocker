@@ -46,5 +46,26 @@ class JerkSONver2Test {
         Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
     }
 
+    @Test
+    void buildGroceriesList2() {
+        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+        String testme = theRealDEAL;
+        Integer expected = 4;
+
+        testSplitGroceriesList.buildGroceriesList(testme);
+        Assert.assertEquals(expected, testSplitGroceriesList.getExceptionCatches());
+    }
+
+    @Test
+    void findMilkTest(){
+        JerkSONver2 testSplitGroceriesList = new JerkSONver2();
+        String testme = theRealDEAL;
+        Integer expected = 4;
+
+        testSplitGroceriesList.buildGroceriesList(testme);
+
+        Integer milkAmnt = testSplitGroceriesList.findMilk();
+    }
+
 
 }

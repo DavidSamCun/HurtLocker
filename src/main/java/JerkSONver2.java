@@ -7,7 +7,6 @@ public class JerkSONver2 {
 
     private List<String> listItems;
     private List<Groceries> groceriesList;
-    String defaultRegex1 = "(?<=^|##).+?(?=##)";
     private Integer exceptionCatches = 0;
 
     public JerkSONver2() {
@@ -29,17 +28,10 @@ public class JerkSONver2 {
 
     public void buildGroceriesList(String input){
         splitAndList(input, "(?<=^|##).+?(?=##)", true);      //Part 1, divie into seperate items and put in list
-
         for (String a : splitAndList(input, "(?<=^|##).+?(?=##)", true)) {
             groceriesList.add(buildGrocery(a));
         }
-
-
-
     }
-
-
-
 
     public List<String> splitAndList(String inputString, String regex, Boolean part1){
         List<String> output = new LinkedList<>();
@@ -50,7 +42,6 @@ public class JerkSONver2 {
         //String divider = "(?<=[:;@^*%!]).+?(?=[:;@^*%!])" // part 2, parsing groceries
 
         //String divider2 = "(?<=[:]).+?(?=[:;@^*%!])"      // part 2 the better choice This will split it into items
-
         Matcher mat = Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
                 .matcher(inputString);
         while(mat.find()){
@@ -62,18 +53,14 @@ public class JerkSONver2 {
                 output.add(mat.group());
                 listItems.add(mat.group());
             }
-
         }
-
         iterate(output); //for testing
-
         return output;
     }
 
     public Groceries buildGrocery (String input){
         List<String> inputDivided = splitAndList(input, "(?<=[:]).+?(?=[:;@^*%!])" , false);
         Boolean foundError = false;
-
         for(String a: inputDivided){
             Matcher mat = Pattern.compile("[:;@^*%!]")
                     .matcher(a);
@@ -87,9 +74,6 @@ public class JerkSONver2 {
         return item;
     }
 
-
-
-
     public void iterate(List<String> item){
         Iterator it = item.iterator();
         System.out.println("List of Matches: \n");
@@ -98,4 +82,26 @@ public class JerkSONver2 {
         }
     }
 
+
+    public HashMap<String, Integer> MapItemPrice(List<Groceries> input, String regexItem ) {
+        HashMap<String, Integer> PriceAndAmount = new HashMap<>();
+        Integer initialize = 0;
+        Integer temp;
+
+        for (Groceries a: groceriesList) {
+            Matcher mat = Pattern.compile(regexItem)
+                    .matcher(a.getName());
+            if(mat.find()){
+                if (!PriceAndAmount.containsKey(mat.group())){
+                    PriceAndAmount.put(mat.group(), initialize);
+                } else {
+                    temp = PriceAndAmount.get(mat.group()) + 1;
+                    PriceAndAmount.put(mat.group(), temp);
+                }
+            }
+        }
+        //Milk = "[mMiIlLkK]{4}"
+
+        return PriceAndAmount;
+    }
 }
