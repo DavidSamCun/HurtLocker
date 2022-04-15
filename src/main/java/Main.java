@@ -10,9 +10,17 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception{
-        JerkSONver2 jerkSon = new JerkSONver2();
+        JerkSONver2 jerkSONver2 = new JerkSONver2();
+        GroceriesList groceriesList = new GroceriesList(jerkSONver2);
+
         String output = (new Main()).readRawDataToString();
+
         System.out.println(output);
+
+        groceriesList.buildGroceriesList(output); //Step 1
+        groceriesList.mapItemPrice("Milk", "[mMiIlLkK]{4}");
+        groceriesList.mapItemPrice("Cookies", "[cCoO0kKIieEsS]{7}");
+
 
     }
 }

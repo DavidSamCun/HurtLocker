@@ -8,10 +8,11 @@ public class GroceriesList {
 
     private JerkSONver2 jerkson;
     private List<Groceries> groceriesList;
-    private HashMap<String, HashMap<String, Integer>> ItemPriceAmount;
+    public HashMap<String, HashMap<String, Integer>> itemPriceAmount;
 
     public GroceriesList(JerkSONver2 jerkSON){
         this.jerkson = jerkSON;
+        this.itemPriceAmount = new HashMap<>();
         this.groceriesList = new ArrayList<>();
     }
 
@@ -19,8 +20,13 @@ public class GroceriesList {
         return groceriesList;
     }
 
-    public HashMap<String, HashMap<String, Integer>> getItemPrimeAcount() {
-        return ItemPriceAmount;
+    public HashMap<String, HashMap<String, Integer>> getItemPriceAmount() {
+        return itemPriceAmount;
+    }
+
+    public void BuildAndTally(String input){
+        buildGroceriesList(input);
+
     }
 
     public void buildGroceriesList(String input){
@@ -28,26 +34,33 @@ public class GroceriesList {
         for (String a : jerkson.splitAndList(input, "(?<=^|##).+?(?=##)", true)) {
             groceriesList.add(jerkson.buildGrocery(a));
         }
+        while(groceriesList.remove(null));
     }
 
-    public void MapItemPrice(String regexItem, String Item) {
+    public void mapItemPrice(String Item, String regexItem) {
         Integer initialize = 0;
         Integer temp;
         HashMap<String, Integer> PriceAmount = new HashMap<>();
-        ItemPriceAmount.put(Item, PriceAmount);
+        itemPriceAmount.put(Item, PriceAmount);
 
         for (Groceries a : groceriesList) {
+//            if(a != null){
             Matcher mat = Pattern.compile(regexItem)
                     .matcher(a.getName());
             if (mat.find()) {
-                if(!ItemPriceAmount.get(Item).containsKey(mat.group())){
-                    ItemPriceAmount.get(Item).put(a.getPrice(), initialize);
+                if(!itemPriceAmount.get(Item).containsKey(a.getPrice())){
+                    itemPriceAmount.get(Item).put(a.getPrice(), initialize);
                 }
-                temp = ItemPriceAmount.get(Item).get(a.getPrice()) + 1;
-                ItemPriceAmount.get(Item).put(a.getPrice(), temp);
+                temp = itemPriceAmount.get(Item).get(a.getPrice()) + 1;
+                itemPriceAmount.get(Item).put(a.getPrice(), temp);
             }
             //Milk = "[mMiIlLkK]{4}"
         }
+//        }
+    }
+
+    public HashMap<String, Integer> getPriceAmntMap(String key){
+        return itemPriceAmount.get(key);
     }
 
     //public void MapItemFirst(String){}
