@@ -1,7 +1,6 @@
+import devHell.JerkSON;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class JerkSONTest {
     String testWord0 = "";
@@ -95,16 +94,16 @@ class JerkSONTest {
         splitMeth.splitAndList(theRealDEAL,split);
     }
 
-    @Test
-    void buildGroceryTest1(){
-        JerkSON splitMeth = new JerkSON();
-        //(?<=[:;@^*%!]).+?(?=[:;@^*%!])
-        String test = test1Normal1 + ";";  //"Name:Milk;Price:3.23;type:food;expiration:1/24/2016"
-        Groceries output = splitMeth.buildGrocery(test);
-
-        Assert.assertEquals(output.getName(), "Milk");
-        Assert.assertEquals(output.getPrice(), "3.23");
-        Assert.assertEquals(output.getType(), "food");
-        Assert.assertEquals(output.getDate(), "1/24/2016");
-    }
+//    @Test
+//    void buildGroceryTest1(){
+//        JerkSON splitMeth = new JerkSON();
+//        //(?<=[:;@^*%!]).+?(?=[:;@^*%!])
+//        String test = test1Normal1 + ";";  //"Name:Milk;Price:3.23;type:food;expiration:1/24/2016"
+//        Groceries output = splitMeth.buildGrocery(test);
+//
+//        Assert.assertEquals(output.getName(), "Milk");
+//        Assert.assertEquals(output.getPrice(), "3.23");
+//        Assert.assertEquals(output.getType(), "food");
+//        Assert.assertEquals(output.getDate(), "1/24/2016");
+//    }
 }

@@ -16,21 +16,13 @@ public class GroceriesList {
         this.groceriesList = new ArrayList<>();
     }
 
-    public List<Groceries> getGroceriesList() {
-        return groceriesList;
-    }
+    public List<Groceries> getGroceriesList() {return groceriesList;}
 
-    public HashMap<String, HashMap<String, Integer>> getItemPriceAmount() {
-        return itemPriceAmount;
-    }
+    public HashMap<String, HashMap<String, Integer>> getItemPriceAmount() {return itemPriceAmount;}
 
-    public void BuildAndTally(String input){
-        buildGroceriesList(input);
-
-    }
+    public void BuildAndTally(String input){buildGroceriesList(input);}
 
     public void buildGroceriesList(String input){
-        //jerkson.splitAndList(input, "(?<=^|##).+?(?=##)", true);      //Part 1, divie into seperate items and put in list
         for (String a : jerkson.splitAndList(input, "(?<=^|##).+?(?=##)", true)) {
             groceriesList.add(jerkson.buildGrocery(a));
         }
@@ -44,7 +36,6 @@ public class GroceriesList {
         itemPriceAmount.put(Item, PriceAmount);
 
         for (Groceries a : groceriesList) {
-//            if(a != null){
             Matcher mat = Pattern.compile(regexItem)
                     .matcher(a.getName());
             if (mat.find()) {
@@ -54,14 +45,39 @@ public class GroceriesList {
                 temp = itemPriceAmount.get(Item).get(a.getPrice()) + 1;
                 itemPriceAmount.get(Item).put(a.getPrice(), temp);
             }
-            //Milk = "[mMiIlLkK]{4}"
         }
-//        }
     }
 
-    public HashMap<String, Integer> getPriceAmntMap(String key){
-        return itemPriceAmount.get(key);
+    public String printPriceMap(String item){
+
+        String output= "";
+        String read = "";
+        int count = 0;
+
+        for (HashMap.Entry<String, Integer> a: itemPriceAmount.get(item).entrySet()){
+            count += a.getValue();
+            read += "Price " + a.getKey().toString() + " Qty: " + a.getValue().toString() + "\n";
+            //System.out.println(a.getValue());
+        }
+
+        output = item + " Qty: " + count + "\n" + read;
+        return output;
     }
+
+    public void printOutput(){
+
+        printPriceMap("Milk");
+        printPriceMap("Cookies");
+        printPriceMap("Apples");
+        printPriceMap("");
+
+
+    }
+
+
+//    public HashMap<String, Integer> getPriceAmntMap(String key){
+//        return itemPriceAmount.get(key);
+//    }
 
     //public void MapItemFirst(String){}
 }

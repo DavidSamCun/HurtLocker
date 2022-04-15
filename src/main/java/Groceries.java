@@ -3,7 +3,6 @@ import java.util.Date;
 
 public class Groceries {
 
-
     private String name;
     private String price;
     private String type;
@@ -47,4 +46,5 @@ public class Groceries {
     public void setDate(String date) {
         this.date = date;
     }
+
 }
